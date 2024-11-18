@@ -17,20 +17,22 @@ repositories {
 dependencies {
     // The bom version can also be set to a specific version
     // https://github.com/openrewrite/rewrite-recipe-bom/releases
-    implementation(platform("org.openrewrite.recipe:rewrite-recipe-bom:latest.release"))
+    implementation(platform("org.openrewrite.recipe:rewrite-recipe-bom:2.14.0"))
 
     implementation("org.openrewrite:rewrite-java")
     implementation("org.openrewrite.recipe:rewrite-java-dependencies")
     implementation("org.openrewrite:rewrite-yaml")
     implementation("org.assertj:assertj-core:3.24.2")
     runtimeOnly("org.openrewrite:rewrite-java-17")
+    implementation("javax.annotation:javax.annotation-api:1.3.2")
+    implementation("org.jspecify:jspecify:1.0.0")
 
     // Refaster style recipes need the rewrite-templating annotation processor and dependency for generated recipes
     // https://github.com/openrewrite/rewrite-templating/releases
     annotationProcessor("org.openrewrite:rewrite-templating:latest.release")
     implementation("org.openrewrite:rewrite-templating")
     // The `@BeforeTemplate` and `@AfterTemplate` annotations are needed for refaster style recipes
-    compileOnly("com.google.errorprone:error_prone_core:2.19.1") {
+    compileOnly("com.google.errorprone:error_prone_core:2.29.0") {
         exclude group: "com.google.auto.service", module: "auto-service-annotations"
     }
 
